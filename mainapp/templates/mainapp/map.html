@@ -1,0 +1,367 @@
+{%extends 'mainapp/base.html'%}
+
+{% block title %}Реестр мест (площадок) накопления ТКО{% endblock %}
+
+
+{% block content%}
+<link rel="stylesheet" href="static/mainapp/css/map.css">
+    Реестр мест (площадок) накопления ТКО
+<style>
+div.text {
+    width:      350px;
+    height:     30px;
+    border:     0px solid black;
+    margin: 0 auto;
+}
+</style>
+{% endblock %}
+
+{% block map %}
+<div id="button">
+        <a class="lenin tick" href="#!">
+		<span class="btnflip-item btnflip__front">Ленинский район</span>
+        </a>
+        <a class="JD tick" href="#!">
+		<span class="btnflip-item btnflip__front">Железнодорожный район</span>
+        </a>
+        <a class="Verh tick" href="#!">
+		<span class="btnflip-item btnflip__front">Верх-Исетский район</span>
+        </a>
+        <a class="Kirov tick" href="#!">
+		<span class="btnflip-item btnflip__front">Кировский район</span>
+        </a>
+        <a class="Oktyab tick" href="#!">
+		<span class="btnflip-item btnflip__front">Октябрьский район</span>
+        </a>
+        <a class="Ord tick" href="#!">
+		<span class="btnflip-item btnflip__front">Орджоникидзевский район</span>
+        </a>
+        <a class="Chkal tick" href="#!">
+		<span class="btnflip-item btnflip__front">Чкаловский район</span>
+        </a>
+</div>
+<div id="myDiv">
+        <script>
+                d3.csv(
+	            "https://raw.githubusercontent.com/rub1nskybtw/segmentation-globlet-cell/main/map.csv",
+	            function(err, rows) {
+		                function unpack(rows, key) {
+		                 rows.Lon = +rows.Lon;
+                         rows.Lat = +rows.Lat;
+                         rows.text = +rows.text;
+			             return rows.map(function(row) {
+				                        return row[key];
+			            });
+		                }
+
+		                let data = [
+			            {
+				                type: "scattermapbox",
+				                text: unpack(rows, "text"),
+				                lon: unpack(rows, "Долгота"),
+				                lat: unpack(rows, "Широта"),
+				                marker: { color: "fuchsia", size: 10}
+			            }
+		                ];
+
+
+
+                        var layout = {
+			            dragmode: "zoom",
+			            mapbox: { style: "open-street-map", center: { lat: 56.822660, lon: 60.605230 }, zoom: 12 },
+			            margin: { r: 50, t: 20, b: 50, l: 50 },
+		                };
+
+		                Plotly.newPlot("myDiv", data, layout);
+
+                });
+
+        let massiv1 = ""
+        let massiv = [ "https://raw.githubusercontent.com/rub1nskybtw/segmentation-globlet-cell/main/map1.csv",
+                       "https://raw.githubusercontent.com/rub1nskybtw/segmentation-globlet-cell/main/map2.csv",
+                       "https://raw.githubusercontent.com/rub1nskybtw/segmentation-globlet-cell/main/map3.csv",
+                       "https://raw.githubusercontent.com/rub1nskybtw/segmentation-globlet-cell/main/map4.csv",
+                       "https://raw.githubusercontent.com/rub1nskybtw/segmentation-globlet-cell/main/map5.csv",
+                       "https://raw.githubusercontent.com/rub1nskybtw/segmentation-globlet-cell/main/map6.csv",
+                       "https://raw.githubusercontent.com/rub1nskybtw/segmentation-globlet-cell/main/map7.csv"]
+        var button = document.querySelector("a.lenin");
+        button.addEventListener("click", function() {
+        massiv1 = massiv[0]
+
+                d3.csv(
+	    massiv1,
+	    function(err, rows) {
+		        function unpack(rows, key) {
+		         rows.Lon = +rows.Lon;
+                 rows.Lat = +rows.Lat;
+                rows.text = +rows.text;
+			    return rows.map(function(row) {
+				        return row[key];
+			    });
+		        }
+
+		                let data = [
+			            {
+				                type: "scattermapbox",
+				                text: unpack(rows, "text"),
+				                lon: unpack(rows, "Долгота"),
+				                lat: unpack(rows, "Широта"),
+				                marker: { color: "fuchsia", size: 10}
+			            }
+		                ];
+
+
+
+                var layout = {
+			    dragmode: "zoom",
+			    mapbox: { style: "open-street-map", center: { lat: 56.822660, lon: 60.605230 }, zoom: 12 },
+			    margin: { r: 50, t: 20, b: 50, l: 50 },
+		        };
+
+		        Plotly.newPlot("myDiv", data, layout);
+
+        })
+        });
+
+
+        var button = document.querySelector("a.JD");
+        button.addEventListener("click", function() {
+        massiv1 = massiv[1]
+
+                d3.csv(
+	    massiv1,
+	    function(err, rows) {
+		        function unpack(rows, key) {
+		         rows.Lon = +rows.Lon;
+                 rows.Lat = +rows.Lat;
+                rows.text = +rows.text;
+			    return rows.map(function(row) {
+				        return row[key];
+			    });
+		        }
+
+		                let data = [
+			            {
+				                type: "scattermapbox",
+				                text: unpack(rows, "text"),
+				                lon: unpack(rows, "Долгота"),
+				                lat: unpack(rows, "Широта"),
+				                marker: { color: "fuchsia", size: 10}
+			            }
+		                ];
+
+
+
+                var layout = {
+			    dragmode: "zoom",
+			    mapbox: { style: "open-street-map", center: { lat: 56.857280, lon: 60.593780 }, zoom: 12 },
+			    margin: { r: 50, t: 20, b: 50, l: 50 },
+		        };
+
+		        Plotly.newPlot("myDiv", data, layout);
+
+        })
+        });
+
+
+        var button = document.querySelector("a.Verh");
+        button.addEventListener("click", function() {
+        massiv1 = massiv[2]
+
+                d3.csv(
+	    massiv1,
+	    function(err, rows) {
+		        function unpack(rows, key) {
+		         rows.Lon = +rows.Lon;
+                 rows.Lat = +rows.Lat;
+                rows.text = +rows.text;
+			    return rows.map(function(row) {
+				        return row[key];
+			    });
+		        }
+
+		                let data = [
+			            {
+				                type: "scattermapbox",
+				                text: unpack(rows, "text"),
+				                lon: unpack(rows, "Долгота"),
+				                lat: unpack(rows, "Широта"),
+				                marker: { color: "fuchsia", size: 10}
+			            }
+		                ];
+
+
+
+                var layout = {
+			    dragmode: "zoom",
+			    mapbox: { style: "open-street-map", center: { lat: 56.825420, lon: 60.554180 }, zoom: 12 },
+			    margin: { r: 50, t: 20, b: 50, l: 50 },
+		        };
+
+		        Plotly.newPlot("myDiv", data, layout);
+
+        })
+        });
+
+
+        var button = document.querySelector("a.Kirov");
+        button.addEventListener("click", function() {
+        massiv1 = massiv[3]
+
+                d3.csv(
+	    massiv1,
+	    function(err, rows) {
+		        function unpack(rows, key) {
+		         rows.Lon = +rows.Lon;
+                 rows.Lat = +rows.Lat;
+                rows.text = +rows.text;
+			    return rows.map(function(row) {
+				        return row[key];
+			    });
+		        }
+
+		                let data = [
+			            {
+				                type: "scattermapbox",
+				                text: unpack(rows, "text"),
+				                lon: unpack(rows, "Долгота"),
+				                lat: unpack(rows, "Широта"),
+				                marker: { color: "fuchsia", size: 10}
+			            }
+		                ];
+
+
+
+                var layout = {
+			    dragmode: "zoom",
+			    mapbox: { style: "open-street-map", center: { lat: 56.845350, lon: 60.658040 }, zoom: 12 },
+			    margin: { r: 50, t: 20, b: 50, l: 50 },
+		        };
+
+		        Plotly.newPlot("myDiv", data, layout);
+
+        })
+        });
+
+
+        var button = document.querySelector("a.Oktyab");
+        button.addEventListener("click", function() {
+        massiv1 = massiv[4]
+
+                d3.csv(
+	    massiv1,
+	    function(err, rows) {
+		        function unpack(rows, key) {
+		         rows.Lon = +rows.Lon;
+                 rows.Lat = +rows.Lat;
+                rows.text = +rows.text;
+			    return rows.map(function(row) {
+				        return row[key];
+			    });
+		        }
+
+		                let data = [
+			            {
+				                type: "scattermapbox",
+				                text: unpack(rows, "text"),
+				                lon: unpack(rows, "Долгота"),
+				                lat: unpack(rows, "Широта"),
+				                marker: { color: "fuchsia", size: 10}
+			            }
+		                ];
+
+
+
+                var layout = {
+			    dragmode: "zoom",
+			    mapbox: { style: "open-street-map", center: { lat: 56.784330, lon: 60.738920 }, zoom: 12 },
+			    margin: { r: 50, t: 20, b: 50, l: 50 },
+		        };
+
+		        Plotly.newPlot("myDiv", data, layout);
+
+        })
+        });
+
+
+        var button = document.querySelector("a.Ord");
+        button.addEventListener("click", function() {
+        massiv1 = massiv[5]
+
+                d3.csv(
+	    massiv1,
+	    function(err, rows) {
+		        function unpack(rows, key) {
+		         rows.Lon = +rows.Lon;
+                 rows.Lat = +rows.Lat;
+                rows.text = +rows.text;
+			    return rows.map(function(row) {
+				        return row[key];
+			    });
+		        }
+
+		                let data = [
+			            {
+				                type: "scattermapbox",
+				                text: unpack(rows, "text"),
+				                lon: unpack(rows, "Долгота"),
+				                lat: unpack(rows, "Широта"),
+				                marker: { color: "fuchsia", size: 10}
+			            }
+		                ];
+
+
+
+                var layout = {
+			    dragmode: "zoom",
+			    mapbox: { style: "open-street-map", center: { lat: 56.893250, lon: 60.615420 }, zoom: 12 },
+			    margin: { r: 50, t: 20, b: 50, l: 50 },
+		        };
+
+		        Plotly.newPlot("myDiv", data, layout);
+
+        })
+        });
+
+
+        var button = document.querySelector("a.Chkal");
+        button.addEventListener("click", function() {
+        massiv1 = massiv[6]
+
+                d3.csv(
+	    massiv1,
+	    function(err, rows) {
+		        function unpack(rows, key) {
+		         rows.Lon = +rows.Lon;
+                 rows.Lat = +rows.Lat;
+                rows.text = +rows.text;
+			    return rows.map(function(row) {
+				        return row[key];
+			    });
+		        }
+
+		                let data = [
+			            {
+				                type: "scattermapbox",
+				                text: unpack(rows, "text"),
+				                lon: unpack(rows, "Долгота"),
+				                lat: unpack(rows, "Широта"),
+				                marker: { color: "fuchsia", size: 10}
+			            }
+		                ];
+
+
+
+                var layout = {
+			    dragmode: "zoom",
+			    mapbox: { style: "open-street-map", center: { lat: 56.801640, lon: 60.612880 }, zoom: 12 },
+			    margin: { r: 50, t: 20, b: 50, l: 50 },
+		        };
+
+		        Plotly.newPlot("myDiv", data, layout);
+
+        })
+        });
+        </script>
+</div>
+{% endblock %}
