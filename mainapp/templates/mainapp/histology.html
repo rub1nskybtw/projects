@@ -2,13 +2,20 @@
 
 {% block content %}
   <link rel="stylesheet" href="static/mainapp/css/histology.css">
-  <img class="marginauto" src="media/segmentation/15.jpg" width="500" height="250" align="middle">
-  <form class="gg" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    <label for="file" class="btn">Загрузить</label>
-    <input id="file"  style="visibility:hidden;" type="file" name="myfile" accept="image/jpeg">
-    <button type="submit" id="button">Обработать</button>
+  <p class="al">
+  <img align="center" src="media/segmentation/15.jpg" onError="this.src='media/picture.jpg'" width="870" height="460">
+  </p>
+  <form class="gg" align="center" method="post" enctype="multipart/form-data">
+  <a name="top"></a>
+  {% csrf_token %}
+   <label align="center" for="file" class="btn ok" style="font-size : 16px; font-family: Arial;">Загрузить</label>
+    <input id="file" class="btn" style="visibility:hidden;" type="file" name="myfile" accept="image/jpeg">
+    <a href="#top"><button type="submit" id="button" class="btn">Обрабоать</button></a>
   </form>
+  </p>
+  <p class="aligncenter">
+  <img align="center" src="media/pp.png" width="830" height="2700">
+  </p>
 {% endblock %}
 
 </body>
